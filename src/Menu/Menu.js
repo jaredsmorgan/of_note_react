@@ -8,19 +8,31 @@ export default class Menu extends Component {
   }
 
   render() {
-    // NOTE: You also need to provide styles, see https://github.com/negomi/react-burger-menu#styling
     return (
       <Slide right>
-        <a id='home' className='menu-item' href='/'>
-          Home
+        <h3>Notebooks</h3>
+        <a id='personal' className='menu-item' href='/'>
+          Personal
         </a>
-        <a id='about' className='menu-item' href=''>
-          About
+        <a id='group' className='menu-item' href='#'>
+          Group
         </a>
-        <a id='contact' className='menu-item' href=''>
-          Contact
+        <a id='public' className='menu-item' href='#'>
+          Public
         </a>
-        {/* <a onClick={ this.showSettings } className="menu-item--small" href="">Settings</a> */}
+        <a id='add' className='menu-item last' href='#'>
+          Add New
+        </a>
+        <h3>Account</h3>
+        <a id='profile' className='menu-item' href='#'>
+          Profile
+        </a>
+        <a id='groups' className='menu-item' href='#'>
+          Groups
+        </a>
+        <a id='logInOut' className='menu-item last' href='#'>
+          Log Out
+        </a>
       </Slide>
     );
   }
