@@ -1,0 +1,34 @@
+[{
+        "title": [
+            "Recipes"
+        ],
+        "typeCat": [
+            "public"
+        ],
+        "description": [
+            "The great public recipe swap."
+        ]
+    },
+    {
+        "title": [
+            "Project 3"
+        ],
+        "typeCat": [
+            "group"
+        ],
+        "description": [
+            "SEIR Dream Team Project Planning"
+        ]
+    },
+    {
+        "title": [
+            "Vacation Planning"
+        ],
+        "typeCat": [
+            "private"
+        ],
+        "description": [
+            "Jared's family vacation planning"
+        ]
+    }
+]
