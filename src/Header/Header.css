@@ -1,0 +1,15 @@
+a:hover h1 {
+    color: #007bff;
+}
+
+main a:hover {
+    text-decoration: none;
+}
+
+main h1 {
+    font-size: 2.25em;
+}
+
+.logo {
+    height: 10vmax;
+}

@@ -1,0 +1,15 @@
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-top: 20px;
+}
+
+a h3 {
+    display: inline;
+    color: #286ee9;
+}
+
+a:hover h3 {
+    color: #7da6ea;
+}

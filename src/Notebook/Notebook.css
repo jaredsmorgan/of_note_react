@@ -1,0 +1,31 @@
+section {
+    margin: 20px 0;
+    border: 3px solid #286ee9;
+    border-radius: 0 0 15px 15px;
+}
+
+section h2 {
+    padding: 1vw 2vw;
+    background: #286ee9;
+    margin: -1px;
+    color: white;
+}
+
+section ul {
+    list-style: none;
+    padding: 0 0 5px;
+    margin: 1vw 2vw;
+}
+
+section li {
+    line-height: 2em;
+}
+
+section li a {
+    color: #0056b3;
+    font-weight: 500;
+}
+
+section li a:hover {
+    color: #286ee9;
+}

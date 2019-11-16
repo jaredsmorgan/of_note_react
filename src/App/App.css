@@ -9,32 +9,3 @@
 .content {
   padding: 2%;
 }
-
-main a:hover {
-  text-decoration: none;
-}
-
-main h1 {
-  font-size: 2.25em;
-}
-
-.App-logo {
-  height: 10vmax;
-}
-
-a h3 {
-  display: inline;
-  color: #286EE9;
-}
-
-a:hover h3 {
-  color: #7DA6EA;
-}
-
-
-.footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  margin-top: 40px;
-}
