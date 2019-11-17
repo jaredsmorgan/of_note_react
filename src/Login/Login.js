@@ -1,11 +1,17 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+// import { Redirect } from 'react-router-dom';
+import { Form, Button, Row, Col } from 'react-bootstrap';
+import './Login.css';
 
 export default class LoginForm extends Component {
-  state = {
-    username: '',
-    password: ''
-  };
+  constructor() {
+    super();
+    this.state = {
+      username: '',
+      password: ''
+    };
+  }
 
   handle_change = e => {
     const name = e.target.name;
@@ -19,24 +25,40 @@ export default class LoginForm extends Component {
 
   render() {
     return (
-      <form onSubmit={e => this.props.handle_login(e, this.state)}>
-        <h2>Log In</h2>
-        <label htmlFor='username'>Username</label>
-        <input
-          type='text'
-          name='username'
-          value={this.state.username}
-          onChange={this.handle_change}
-        />
-        <label htmlFor='password'>Password</label>
-        <input
-          type='password'
-          name='password'
-          value={this.state.password}
-          onChange={this.handle_change}
-        />
-        <input type='submit' />
-      </form>
+      <div className='login'>
+        <Form onSubmit={e => this.props.handle_login(e, this.state)}>
+          <h2>Log In</h2>
+          <Form.Group as={Row}>
+            <Col>
+              <Form.Label htmlFor='username'>Username</Form.Label>
+              <Form.Control
+                type='text'
+                placeholder='hemingway'
+                name='username'
+                autoComplete='username'
+                value={this.state.username}
+                onChange={this.handle_change}
+              />
+            </Col>
+          </Form.Group>
+          <Form.Group as={Row}>
+            <Col>
+              <Form.Label htmlFor='password'>Password</Form.Label>
+              <Form.Control
+                type='password'
+                name='password'
+                autoComplete='current-password'
+                placeholder='password'
+                value={this.state.password}
+                onChange={this.handle_change}
+              />
+            </Col>
+          </Form.Group>
+          <Button type='submit' variant='primary'>
+            Submit
+          </Button>
+        </Form>
+      </div>
     );
   }
 }

@@ -7,10 +7,15 @@ export default class Header extends Component {
   render() {
     return (
       <div className='header'>
-        <Link to='/'>
-          <img className='logo' src={Logo} alt='logo' />
-          <h1>Of Note</h1>
-        </Link>
+        <div>
+          <Link to='/'>
+            <img className='logo' src={Logo} alt='logo' />
+            <h1>Of Note</h1>
+          </Link>
+        </div>
+        <div className='status'>
+          <p>{this.props.loggedin ? `${this.props.user}` : 'Please Log In'}</p>
+        </div>
       </div>
     );
   }

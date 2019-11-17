@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 function Nav(props) {
@@ -6,7 +7,7 @@ function Nav(props) {
     <div>
       <h3>Notebooks</h3>
       <ul>
-        <li>
+        <li className='only'>
           <a id='public' className='menu-item' href='/'>
             Public
           </a>
@@ -14,8 +15,12 @@ function Nav(props) {
       </ul>
       <h3>Account</h3>
       <ul>
-        <li onClick={() => props.display_form('login')}>Log In</li>
-        <li onClick={() => props.display_form('signup')}>Sign Up</li>
+        <li>
+          <Link to={'/login'}>Log In</Link>
+        </li>
+        <li>
+          <Link to={'/signup'}>Sign Up</Link>
+        </li>
       </ul>
     </div>
   );
@@ -39,8 +44,8 @@ function Nav(props) {
             Public
           </a>
         </li>
-        <li>
-          <a id='add' className='menu-item last' href='/'>
+        <li className='last'>
+          <a id='add' className='menu-item' href='/'>
             Add New
           </a>
         </li>
@@ -57,7 +62,12 @@ function Nav(props) {
             Groups
           </a>
         </li>
-        <li onClick={() => props.display_form('logout')}>Log Out</li>
+        <li
+          className='linky menu-item last'
+          onClick={() => props.handle_logout()}
+        >
+          Log Out
+        </li>
       </ul>
     </div>
   );
@@ -68,6 +78,6 @@ export default Nav;
 
 Nav.propTypes = {
   logged_in: PropTypes.bool.isRequired,
-  display_form: PropTypes.func.isRequired,
+  //   display_form: PropTypes.func.isRequired,
   handle_logout: PropTypes.func.isRequired
 };

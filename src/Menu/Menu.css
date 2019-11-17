@@ -15,7 +15,7 @@ h3 {
     position: fixed;
     width: 36px;
     height: 30px;
-    right: 36px;
+    right: 6vw;
     top: 36px;
 }
 
@@ -33,7 +33,7 @@ h3 {
 .bm-cross-button {
     height: 36px !important;
     width: 36px !important;
-    right: 40px !important;
+    right: 6.25vw !important;
     top: 28px !important;
 }
 
@@ -51,6 +51,7 @@ h3 {
 .bm-menu-wrap {
     position: fixed;
     height: 100%;
+    width: 100vw !important;
 }
 
 /* General sidebar styles */
@@ -58,22 +59,31 @@ h3 {
     background: #2463D5;
     text-align: right;
     margin: 0 -.5px;
-    padding: 6em 1.5em 0;
+    padding: 6em 7vw 0;
     font-size: 1.15em;
 }
 
 /* Wrapper for item list */
-.bm-item-list a {
+.bm-item-list a,
+.linky {
     color: #d1d1cc;
-    padding: 0.35em .8em;
 }
 
-.bm-item-list a:hover {
+.bm-item-list a:hover,
+.linky:hover {
     color: #b8b7ad;
 }
 
+.bm-item-list ul {
+    list-style-type: none;
+}
+
 .last {
-    padding: .75em .8em 2em !important;
+    margin: .75em 0 1em !important;
+}
+
+.only {
+    margin: 0 0 1em !important;
 }
 
 /* Individual item */
@@ -84,4 +94,16 @@ h3 {
 /* Styling of overlay */
 .bm-overlay {
     background: rgba(0, 0, 0, 0.2) !important;
+}
+
+@media only screen and (min-width: 768px) {
+    .bm-menu-wrap {
+        width: 50vw !important;
+    }
+}
+
+@media only screen and (min-width: 1024px) {
+    .bm-menu-wrap {
+        width: 30vw !important;
+    }
 }

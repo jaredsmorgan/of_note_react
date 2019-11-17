@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Form, Button, Row, Col } from 'react-bootstrap';
+import './Signup.css';
 
 export default class SignupForm extends Component {
   state = {
@@ -22,45 +24,63 @@ export default class SignupForm extends Component {
 
   render() {
     return (
-      <form onSubmit={e => this.props.handle_signup(e, this.state)}>
-        <h2>Sign Up</h2>
-        <label htmlFor='first_name'>First Name</label>
-        <input
-          type='text'
-          name='first_name'
-          value={this.state.first_name}
-          onChange={this.handle_change}
-        />
-        <label htmlFor='last_name'>Last Name</label>
-        <input
-          type='text'
-          name='last_name'
-          value={this.state.last_name}
-          onChange={this.handle_change}
-        />
-        <label htmlFor='email'>Email</label>
-        <input
-          type='text'
-          name='email'
-          value={this.state.email}
-          onChange={this.handle_change}
-        />
-        <label htmlFor='username'>Username</label>
-        <input
-          type='text'
-          name='username'
-          value={this.state.username}
-          onChange={this.handle_change}
-        />
-        <label htmlFor='password'>Password</label>
-        <input
-          type='password'
-          name='password'
-          value={this.state.password}
-          onChange={this.handle_change}
-        />
-        <input type='submit' />
-      </form>
+      <div className='signup'>
+        <Form onSubmit={e => this.props.handle_signup(e, this.state)}>
+          <h2>Sign Up</h2>
+          <Form.Group as={Row} controlId='name'>
+            <Col>
+              <Form.Label htmlFor='first_name'>First Name</Form.Label>
+              <Form.Control
+                type='text'
+                name='first_name'
+                value={this.state.first_name}
+                onChange={this.handle_change}
+              />
+            </Col>
+            <Col>
+              <Form.Label htmlFor='last_name'>Last Name</Form.Label>
+              <Form.Control
+                type='text'
+                name='last_name'
+                value={this.state.last_name}
+                onChange={this.handle_change}
+              />
+            </Col>
+          </Form.Group>
+          <Form.Group as={Row} controlId='name' className='email'>
+            <Form.Label htmlFor='email'>Email</Form.Label>
+            <Form.Control
+              type='text'
+              name='email'
+              value={this.state.email}
+              onChange={this.handle_change}
+            />
+          </Form.Group>
+          <Form.Group as={Row} controlId='credentials'>
+            <Col>
+              <Form.Label htmlFor='username'>Username</Form.Label>
+              <Form.Control
+                type='text'
+                name='username'
+                value={this.state.username}
+                onChange={this.handle_change}
+              />
+            </Col>
+            <Col>
+              <Form.Label htmlFor='password'>Password</Form.Label>
+              <Form.Control
+                type='password'
+                name='password'
+                value={this.state.password}
+                onChange={this.handle_change}
+              />
+            </Col>
+          </Form.Group>
+          <Button type='submit' variant='primary'>
+            Submit
+          </Button>
+        </Form>
+      </div>
     );
   }
 }

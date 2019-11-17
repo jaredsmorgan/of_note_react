@@ -1,0 +1,22 @@
+.login {
+    width: 90%;
+    margin: 1vh auto;
+}
+
+.email {
+    margin: 1rem 0;
+}
+
+@media only screen and (min-width: 768px) {
+    .login {
+        width: 50%;
+        margin: 1vh auto;
+    }
+}
+
+@media only screen and (min-width: 1280px) {
+    .login {
+        width: 30%;
+        margin: 1vh auto;
+    }
+}
