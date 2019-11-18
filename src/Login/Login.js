@@ -26,17 +26,17 @@ export default class LoginForm extends Component {
   render() {
     return (
       <div className='login'>
+        <h2>Log In</h2>
         <Form onSubmit={e => this.props.handle_login(e, this.state)}>
-          <h2>Log In</h2>
           <Form.Group as={Row}>
             <Col>
-              <Form.Label htmlFor='username'>Username</Form.Label>
+              <Form.Label htmlFor='username'>Email</Form.Label>
               <Form.Control
                 type='text'
                 placeholder='hemingway'
                 name='username'
-                autoComplete='username'
-                value={this.state.username}
+                autoComplete='email'
+                value={this.state.email}
                 onChange={this.handle_change}
               />
             </Col>

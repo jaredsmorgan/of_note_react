@@ -26,19 +26,19 @@ export default class App extends Component {
 
   componentDidMount() {
     if (this.state.logged_in) {
-      fetch('https://of-note.herokuapp.com/api/current_user/', {
+      fetch('https://of-note.herokuapp.com/user/auth/user', {
         headers: { Authorization: `JWT ${localStorage.getItem('token')}` }
       })
         .then(res => res.json())
         .then(json => {
-          this.setState({ username: json.username });
+          this.setState({ username: json.user.username });
         });
     }
   }
 
   handle_login = (e, data) => {
     e.preventDefault();
-    fetch('https://of-note.herokuapp.com/token-auth/', {
+    fetch('https://of-note.herokuapp.com/user/auth/login/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(data)
@@ -55,7 +55,7 @@ export default class App extends Component {
 
   handle_signup = (e, data) => {
     e.preventDefault();
-    fetch('https://of-note.herokuapp.com/api/register/', {
+    fetch('http://of-note.herokuapp.com/user/auth/registration/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(data)
@@ -65,7 +65,7 @@ export default class App extends Component {
         localStorage.setItem('token', json.token);
         this.setState({
           logged_in: true,
-          username: json.username
+          username: json.user.username
         });
       });
   };
@@ -110,7 +110,7 @@ export default class App extends Component {
               path='/signup/'
               render={props => (
                 <SignupForm
-                  handle_login={this.handle_signup}
+                  handle_signup={this.handle_signup}
                   logged_in={this.logged_in}
                 />
               )}
