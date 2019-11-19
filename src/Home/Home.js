@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import Link from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Notebook from '../Notebook/Notebook';
 
@@ -30,22 +30,17 @@ export default class Home extends Component {
     if (this.state.notebooks === null) {
       return null;
     }
-    console.log(this.state.notebooks[0]);
 
-    // let filtered = this.state.notebooks.filter(notebook => notebook.category.name === "")
+    let list = this.state.notebooks.map((notebook, index) => {
+      console.log(notebook);
 
-    // let list = this.state.notebooks.map((notebook, index) => {
-    //   return <div key={index}>
-    //     <Link to={`/notebook/${}`}
-    //   </div>;
-    // });
+      return (
+        <div key={index}>
+          <Notebook title={notebook.title} notebookKey={index} />
+        </div>
+      );
+    });
 
-    return (
-      <div className='content'>
-        <Notebook title='Personal' />
-        <Notebook title='Work' />
-        <Notebook title='Public' />
-      </div>
-    );
+    return <div className='content'>{list}</div>;
   }
 }

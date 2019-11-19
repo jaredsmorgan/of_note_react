@@ -13,11 +13,12 @@ export default class Notebook extends Component {
   }
 
   componentDidMount() {
+    // let key = this.props.NotebookKey;
     axios
-      .get('https://of-note.herokuapp.com/api/note/')
+      .get(`https://of-note.herokuapp.com/api/note/`)
       .then(res => {
-        // console.log(res);
-        // this.setState({ notes: res.data });
+        console.log(res.data);
+        this.setState({ notes: res.data });
       })
       .catch(err => {
         console.error(err);
@@ -25,22 +26,21 @@ export default class Notebook extends Component {
   }
 
   render() {
+    let list = this.state.notes.map((note, index) => {
+      console.log(note);
+      return (
+        <li key={index}>
+          <Link to={`/note/${note}`}>{note.title}</Link>
+        </li>
+      );
+    });
+
     return (
       <section>
         <h2>
           <span>{this.state.title}</span> <Link to='/add_note'>+</Link>
         </h2>
-        <ul>
-          <li>
-            <a href='/'>Project Idea</a>
-          </li>
-          <li>
-            <a href='/'>Bucket List</a>
-          </li>
-          <li>
-            <a href='/'>Vacation Planner</a>
-          </li>
-        </ul>
+        <ul>{list}</ul>
       </section>
     );
   }

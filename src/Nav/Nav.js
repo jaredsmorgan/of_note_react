@@ -29,7 +29,7 @@ function Nav(props) {
     <div>
       <h3>Notebooks</h3>
       <ul>
-        <li>
+        {/* <li>
           <a id='personal' className='menu-item' href='/'>
             Personal
           </a>
@@ -43,10 +43,15 @@ function Nav(props) {
           <a id='public' className='menu-item' href='/'>
             Public
           </a>
+        </li> */}
+        <li>
+          <a id='add' className='menu-item' href='//add_notebook'>
+            Add New
+          </a>
         </li>
         <li className='last'>
-          <a id='add' className='menu-item' href='/'>
-            Add New
+          <a id='add' className='menu-item' href='add_note'>
+            Add Note
           </a>
         </li>
       </ul>
