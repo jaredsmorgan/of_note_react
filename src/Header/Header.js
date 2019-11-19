@@ -14,7 +14,11 @@ export default class Header extends Component {
           </Link>
         </div>
         <div className='status'>
-          <p>{this.props.loggedin ? `${this.props.user}` : 'Please Log In'}</p>
+          <p>
+            {this.props.logged_in
+              ? `${this.props.first} ${this.props.last}`
+              : 'Please Log In'}
+          </p>
         </div>
       </div>
     );

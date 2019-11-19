@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-// import { Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import { Form, Button, Row, Col } from 'react-bootstrap';
 import './Login.css';
 
@@ -24,6 +24,10 @@ export default class LoginForm extends Component {
   };
 
   render() {
+    if (this.props.logged_in === true) {
+      return <Redirect to='/' />;
+    }
+
     return (
       <div className='login'>
         <h2>Log In</h2>

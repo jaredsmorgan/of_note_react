@@ -17,7 +17,7 @@ main a:hover {
 }
 
 main h1 {
-    font-size: 2.25em;
+    font-size: 1.25rem;
 }
 
 .logo {
@@ -27,6 +27,10 @@ main h1 {
 @media only screen and (min-width: 768px) {
     .status p {
         margin: -0.5vw 8vw;
+    }
+
+    main h1 {
+        font-size: 2.25rem;
     }
 }
 

@@ -53,7 +53,7 @@ function Nav(props) {
       <h3>Account</h3>
       <ul>
         <li>
-          <a id='profile' className='menu-item' href='/'>
+          <a id='profile' className='menu-item' href='/profile'>
             Profile
           </a>
         </li>

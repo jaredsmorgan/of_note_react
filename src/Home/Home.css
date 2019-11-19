@@ -1,0 +1,14 @@
+h2 a {
+    color: white;
+    font-size: 1.25em;
+}
+
+h2 a:hover {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+h2 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

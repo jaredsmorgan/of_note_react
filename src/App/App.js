@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, Switch, Redirect } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -10,6 +10,9 @@ import Home from '../Home/Home';
 import LoginForm from '../Login/Login';
 import SignupForm from '../Signup/Signup';
 import Footer from '../Footer/Footer';
+import Profile from '../Profile/Profile';
+import NotebookForm from '../NotebookForm/NotebookForm';
+import NoteForm from '../NoteForm/NoteForm';
 
 export default class App extends Component {
   constructor(props) {
@@ -17,7 +20,9 @@ export default class App extends Component {
     this.state = {
       display_form: '',
       logged_in: localStorage.getItem('token') ? true : false,
-      username: ''
+      username: '',
+      first_name: '',
+      last_name: ''
     };
     this.handle_login = this.handle_login.bind(this);
     this.handle_signup = this.handle_signup.bind(this);
@@ -31,7 +36,27 @@ export default class App extends Component {
       })
         .then(res => res.json())
         .then(json => {
-          this.setState({ username: json.user.username });
+          this.setState({
+            username: json.username,
+            first_name: json.last_name,
+            last_name: json.first_name
+          });
+        });
+    }
+  }
+
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    if (this.state.logged_in) {
+      fetch('https://of-note.herokuapp.com/user/auth/user', {
+        headers: { Authorization: `JWT ${localStorage.getItem('token')}` }
+      })
+        .then(res => res.json())
+        .then(json => {
+          this.setState({
+            username: json.username,
+            first_name: json.first_name,
+            last_name: json.last_name
+          });
         });
     }
   }
@@ -72,14 +97,12 @@ export default class App extends Component {
 
   handle_logout = () => {
     localStorage.removeItem('token');
-    this.setState({ logged_in: false, username: '', redirect: true });
-  };
-
-  renderRedirect = () => {
-    let url = '/';
-    if (this.state.redirect === true) {
-      return <Redirect to={url} />;
-    }
+    this.setState({
+      logged_in: false,
+      username: '',
+      first_name: '',
+      last_name: ''
+    });
   };
 
   render() {
@@ -91,18 +114,30 @@ export default class App extends Component {
           disableAutoFocus
           logged_in={this.state.logged_in}
           handle_logout={this.handle_logout}
+          user={this.state.username}
         />
         <main id='page-wrap' className='wrapper'>
-          <Header loggedin={this.state.logged_in} user={this.state.username} />
+          <Header
+            logged_in={this.state.logged_in}
+            first={this.state.first_name}
+            last={this.state.last_name}
+          />
 
           <Switch>
             <Route exact path='/' component={Home} />
+            <Route
+              path='/profile'
+              render={props => <Profile logged_in={this.state.logged_in} />}
+            />
+            <Route path='/add_notebook' component={NotebookForm} />
+            <Route path='/add_note' component={NoteForm} />
+            )} />
             <Route
               path='/login'
               render={props => (
                 <LoginForm
                   handle_login={this.handle_login}
-                  logged_in={this.logged_in}
+                  logged_in={this.state.logged_in}
                 />
               )}
             />
@@ -111,7 +146,7 @@ export default class App extends Component {
               render={props => (
                 <SignupForm
                   handle_signup={this.handle_signup}
-                  logged_in={this.logged_in}
+                  logged_in={this.state.logged_in}
                 />
               )}
             />
